@@ -12,9 +12,11 @@ export class UserService {
         @InjectModel('User') private readonly userModel: Model<User>,
     ){}
 
-    // Get All Users
-  //  ***************************************************************  //
-    async getAllUsers() {
-        return await this.userModel.find({});
+    find(options:{}) {
+        return this.userModel.find(options);
+    }
+
+    count(options:{}) {
+        return this.userModel.count(options).exec();
     }
 }
