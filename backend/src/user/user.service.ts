@@ -13,7 +13,7 @@ export class UserService {
     ){}
 
     find(options:{}) {
-        return this.userModel.find(options);
+        return this.userModel.find(options).sort({'createdAt':'desc'});
     }
 
     count(options:{}) {
