@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { PaginateService } from 'src/paginate/paginate.service';
 
 // interface 
 import User from './interface/user.interface';
@@ -9,6 +10,7 @@ import User from './interface/user.interface';
 export class UserService {
 
     constructor(
+        
         @InjectModel('User') private readonly userModel: Model<User>,
     ){}
 
