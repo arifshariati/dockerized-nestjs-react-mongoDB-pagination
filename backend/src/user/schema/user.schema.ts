@@ -12,6 +12,10 @@ export class User {
     @Prop()
     name: string;
 
+    @Factory(faker => faker.image.avatar())
+    @Prop()
+    avatar: string;
+
     @Factory(faker => faker.random.arrayElement(gender))
     @Prop()
     gender: string;

@@ -2,7 +2,7 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { Request } from "express";
 import { UserService } from 'src/user/user.service';
 
-const current_page = 1;
+const current_page = 0;
 const per_page = 10;
 
 @Injectable()
@@ -20,10 +20,10 @@ export class PaginateService {
         const query = this.userService.find(options);
 
         const page: number = parseInt(req.query.page as any) || current_page;
-        const limit: number = parseInt(req.query.per_page as any) || per_page;
+        const limit: number = parseInt(req.query.perPage as any) || per_page;
         const total = await this.userService.count(options);
 
-        const data = await query.skip((page - 1) * limit).limit(limit).exec();
+        const data = await query.skip((page) * limit).limit(limit).exec();
 
         return {
             data,
